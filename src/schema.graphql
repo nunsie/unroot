@@ -1,0 +1,132 @@
+scalar DateTime
+scalar Json
+
+type Query {
+  account: Account
+  card(card_id: ID!): Card
+  cards: [Card]
+  categories: [Category]
+  category(id: ID!): Category
+  contact(contact_id: ID!): Contact
+  contacts: [Contact]
+  tag(tag_id: ID!): Tag
+  tags: [Tag]
+  transaction(transaction_id: ID!): Transaction
+  transactions: [Transaction]
+}
+
+type Mutation {
+  createCard(name: String!, secure_code: String!): Card
+  createCategory(name: String!): Category
+  createContact(name: String!, bank_number: String!, bank_name: String!, email: String): Contact
+  createTag(name: String!, tag_limit: String): Tag
+  createTransaction(contact_id: ID, amount: Int!, description: String, their_reference: String!, category_id: ID, emails: [String], bank_name: String, bank_number: String, contact_name: String, contact_email: String, save_contact: Boolean): Transaction
+
+  deleteCard(id: ID!): Card
+  deleteCategory(id: ID!): Category
+  deleteContact(id: ID!): Contact
+  deleteTag(id: ID!): Tag
+
+  updateCard(id: ID!, name: String, transaction_limit: Int, daily_limit: Int, monthly_limit: Int, tag_id: Int, lock: Boolean, pin: String, secure_code: String, code: String): Card
+  updateCategory(id: ID!, name: String!): Category
+  updateContact(id: ID!, name: String, bank_number: String, bank_name: String, email: String): Contact
+  updateTag(id: ID!, name: String, tag_limit: String): Tag
+  updateTransaction(id: ID!, category_id: ID, category_rule: Rule, tag_ids: [ID]): Transaction
+}
+
+type Account {
+  id: ID!
+  email: String
+  bank_number: String
+  first_name: String
+  last_name: String
+  cellphone: String
+  app_totp: Boolean
+  balance: Int
+  address_line_1: String
+  address_line_2: String
+  city: String
+  area_code: String
+  created_at: DateTime
+}
+
+type Transaction {
+  id: ID!
+  user: Account
+  card: Card
+  amount: Int
+  method: String
+  type: String
+  description: String
+  created_at: DateTime
+  tags: [Tag]
+  category: Category
+  contact: Contact
+  merchant: Merchant
+}
+
+type Merchant {
+  category: String
+  category_code: String
+  name: String
+  location: String
+  country: String
+}
+
+type Card {
+  id: ID!
+  name: String
+  last_4_digits: String
+  virtual: Boolean
+  state: String
+  created_at: DateTime
+  transaction_limit: Int
+  daily_limit: Int
+  monthly_limit: Int
+  tag: Tag
+  sensitive: Sensitive
+  code: String
+  config_variables: Json
+  transactions: [Transaction]
+}
+
+type Sensitive {
+  card_number: String
+  cvv: String
+  valid_date: String
+  expiry_date: DateTime
+  secure_code: String
+}
+
+type Category {
+  id: ID!
+  name: String
+  icon: String
+  theme: String
+  soft_limit: Int
+  created_at: DateTime
+  transactions: [Transaction]
+}
+
+type Contact {
+  id: ID!
+  name: String
+  bank_number: String
+  bank_name: String
+  email: String
+  created_at: DateTime
+  transactions: [Transaction]
+}
+
+type Tag {
+  id: ID!
+  name: String
+  tag_limit: Int
+  created_at: DateTime
+  transactions: [Transaction]
+}
+
+enum Rule {
+  future
+  all
+}

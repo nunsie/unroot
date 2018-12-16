@@ -1,0 +1,39 @@
+service: unroot
+
+# Use the serverless-webpack plugin to transpile ES6
+plugins:
+  - serverless-webpack
+  - serverless-offline
+
+# serverless-webpack configuration
+# Enable auto-packing of external modules
+custom:
+  webpack:
+    webpackConfig: ./webpack.config.js
+    includeModules: true
+  environment:
+    STAGE: ${env:STAGE}
+
+provider:
+  name: aws
+  stage: ${env:STAGE}
+  runtime: nodejs8.10
+  region: eu-west-1
+  environment: ${self:custom.environment}
+
+functions:
+  graphql:
+    handler: src/index.server
+    events:
+    - http:
+        path: /
+        method: post
+        cors: true
+    timeout: 30
+  playground:
+    handler: src/index.playground
+    events:
+    - http:
+        path: /
+        method: get
+        cors: true
