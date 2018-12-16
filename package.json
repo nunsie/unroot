@@ -1,7 +1,8 @@
 {
   "name": "rootgql",
   "scripts": {
-    "start": "ts-node src/index.ts"
+    "start": "sls offline start",
+    "deploy": "sls deploy"
   },
   "dependencies": {
     "apisauce": "^1.0.1",
