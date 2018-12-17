@@ -70,6 +70,12 @@ interface Tag {
   created_at: Date
 }
 
+interface Message {
+  success: boolean
+  message: string
+}
+
+
 // define the api
 const api = create({
   baseURL: 'https://api.root.co.za/v1',
@@ -287,6 +293,47 @@ async function createTransaction(context, { contact_id, amount, description, the
 }
 
 
+
+async function deleteCard(context, { card_id }): Promise<Message> {
+  try {
+    auth(context)
+    const card: ApiResponse<any> = await api.delete('/cards/' + card_id)
+    return card.data;
+  } catch (error) {
+    throw error
+  }
+}
+
+async function deleteCategory(context, { category_id }): Promise<Message> {
+  try {
+    auth(context)
+    const category: ApiResponse<any> = await api.delete('/categories/' + category_id)
+    return category.data;
+  } catch (error) {
+    throw error
+  }
+}
+
+async function deleteContact(context, { contact_id }): Promise<Message> {
+  try {
+    auth(context)
+    const contact: ApiResponse<any> = await api.delete('/contacts/' + contact_id)
+    return contact.data;
+  } catch (error) {
+    throw error
+  }
+}
+
+async function deleteTag(context, { tag_id }): Promise<Message> {
+  try {
+    auth(context)
+    const tag: ApiResponse<any> = await api.delete('/tags/' + tag_id)
+    return tag.data;
+  } catch (error) {
+    throw error
+  }
+}
+
 export default {
   account,
   transactions,
@@ -304,4 +351,8 @@ export default {
   createContact,
   createTag,
   createTransaction,
+  deleteCard,
+  deleteCategory,
+  deleteContact,
+  deleteTag,
 }

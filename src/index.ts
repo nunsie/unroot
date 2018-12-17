@@ -56,20 +56,16 @@ const resolvers = {
     },
   
     deleteCard(parent, args, context, info) {
-      // TODO: Implement resolver
-      // (id: ID!): Card
+      return root.deleteCard(context, args)
     },
     deleteCategory(parent, args, context, info) {
-      // TODO: Implement resolver
-      // (id: ID!): Category
+      return root.deleteCategory(context, args)
     },
     deleteContact(parent, args, context, info) {
-      // TODO: Implement resolver
-      // (id: ID!): Contact
+      return root.deleteContact(context, args)
     },
     deleteTag(parent, args, context, info) {
-      // TODO: Implement resolver
-      // (id: ID!): Tag
+      return root.deleteTag(context, args)
     },
   
     updateCard(parent, args, context, info) {

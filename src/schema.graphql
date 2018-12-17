@@ -22,10 +22,10 @@ type Mutation {
   createTag(name: String!, tag_limit: Int): Tag
   createTransaction(contact_id: ID, amount: Int!, description: String, their_reference: String!, category_id: ID, emails: [String], bank_name: String, bank_number: String, contact_name: String, contact_email: String, save_contact: Boolean): Transaction
 
-  deleteCard(id: ID!): Card
-  deleteCategory(id: ID!): Category
-  deleteContact(id: ID!): Contact
-  deleteTag(id: ID!): Tag
+  deleteCard(card_id: ID!): Message
+  deleteCategory(category_id: ID!): Message
+  deleteContact(contact_id: ID!): Message
+  deleteTag(tag_id: ID!): Message
 
   updateCard(id: ID!, name: String, transaction_limit: Int, daily_limit: Int, monthly_limit: Int, tag_id: Int, lock: Boolean, pin: String, secure_code: String, code: String): Card
   updateCategory(id: ID!, name: String!): Category
@@ -105,6 +105,11 @@ type Tag {
   tag_limit: Int
   created_at: DateTime
   transactions: [Transaction]
+}
+
+type Message {
+  success: Boolean
+  message: String
 }
 
 enum Rule {
