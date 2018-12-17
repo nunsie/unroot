@@ -56,13 +56,19 @@ Test using test key provided (`test_key_tYILz1640w9q5n5kNQUZ`), base64 string fo
 ## TODO
 I haven't been able to test a bunch of queries and mutations as yet because I haven't been accepted into the private beta 💔, would love if someone with access could test some of the below and report their findings:
 
-- Test `card` query with a valid api key
-- Test `transaction` query with a valid api key
-- Test `category` query with a valid api key
-- Test `contact` query with a valid api key
-- Test `tag` query with a valid api key
+- [ ] Test `card` query with a valid api key
+- [ ] Test `transaction` query with a valid api key
+- [ ] Test `category` query with a valid api key
+- [ ] Test `contact` query with a valid api key
+- [ ] Test `tag` query with a valid api key
 
 These relational queries might get a little complex.. don't want to end up in infinite loops 🤔
-- Extend `Card` type to include `code`, `sensitive` and `config_variables`
-- Extend `Card` type to return relational data to `Tag` instead of just the `tag_id`
-- Extend `Transaction` type to return relational data to: `Tag`, `Card`, `Category` & `Contact`, instead of just returning their id's
+- [ ] Extend `Card` type to include `code`, `sensitive` and `config_variables`
+- [ ] Extend `Card` type to return relational data to `Tag` instead of just the `tag_id`
+- [ ] Extend `Transaction` type to return relational data to: `Tag`, `Card`, `Category` & `Contact`, instead of just returning their id's
+
+- [ ] Implement `updateCard` resolver
+- [ ] Implement `updateCategory` resolver
+- [ ] Implement `updateContact` resolver
+- [ ] Implement `updateTag` resolver
+- [ ] Implement `updateTransaction` resolver
