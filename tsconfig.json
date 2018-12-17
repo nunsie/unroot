@@ -9,5 +9,6 @@
     "lib": [
       "esnext", "dom"
     ]
-  }
+  },
+  "files": ["typings/typings.d.ts"]
 }

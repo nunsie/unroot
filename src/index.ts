@@ -1,6 +1,7 @@
 // import { GraphQLServer } from 'graphql-yoga'
 import { GraphQLServerLambda } from 'graphql-yoga'
 import root from './root'
+import * as typeDefs from './schema.graphql'
 
 const resolvers = {
   Query: {
@@ -93,7 +94,7 @@ const resolvers = {
 }
 
 const lambda = new GraphQLServerLambda({
-  typeDefs: './src/schema.graphql',
+  typeDefs,
   resolvers,
   context: req => ({
     ...req,
