@@ -82,7 +82,6 @@ const api = create({
 })
 
 api.addResponseTransform(response => {
-  console.log(response.data)
   if (response.data.error) {
     // just mutate the data to what you want.
     throw new Error(response.data.message || response.data.error.message)
