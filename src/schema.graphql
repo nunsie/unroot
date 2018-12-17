@@ -6,7 +6,7 @@ type Query {
   card(card_id: ID!): Card
   cards: [Card]
   categories: [Category]
-  category(id: ID!): Category
+  category(category_id: ID!): Category
   contact(contact_id: ID!): Contact
   contacts: [Contact]
   tag(tag_id: ID!): Tag
@@ -35,7 +35,7 @@ type Mutation {
 }
 
 type Account {
-  id: ID!
+  user_id: ID
   email: String
   bank_number: String
   first_name: String
@@ -51,30 +51,22 @@ type Account {
 }
 
 type Transaction {
-  id: ID!
-  user: Account
-  card: Card
+  transaction_id: ID
+  user_id: ID
+  card_id: ID
   amount: Int
   method: String
   type: String
   description: String
   created_at: DateTime
-  tags: [Tag]
-  category: Category
-  contact: Contact
-  merchant: Merchant
-}
-
-type Merchant {
-  category: String
-  category_code: String
-  name: String
-  location: String
-  country: String
+  tag_ids: [ID]
+  category_id: ID
+  contact_id: ID
+  merchant: Json
 }
 
 type Card {
-  id: ID!
+  card_id: ID
   name: String
   last_4_digits: String
   virtual: Boolean
@@ -83,23 +75,12 @@ type Card {
   transaction_limit: Int
   daily_limit: Int
   monthly_limit: Int
-  tag: Tag
-  sensitive: Sensitive
-  code: String
-  config_variables: Json
+  tag_id: ID
   transactions: [Transaction]
 }
 
-type Sensitive {
-  card_number: String
-  cvv: String
-  valid_date: String
-  expiry_date: DateTime
-  secure_code: String
-}
-
 type Category {
-  id: ID!
+  category_id: ID
   name: String
   icon: String
   theme: String
@@ -109,7 +90,7 @@ type Category {
 }
 
 type Contact {
-  id: ID!
+  contact_id: ID
   name: String
   bank_number: String
   bank_name: String
@@ -119,7 +100,7 @@ type Contact {
 }
 
 type Tag {
-  id: ID!
+  tag_id: ID
   name: String
   tag_limit: Int
   created_at: DateTime
