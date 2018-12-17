@@ -19,7 +19,7 @@ type Mutation {
   createCard(name: String!, secure_code: String!): Card
   createCategory(name: String!): Category
   createContact(name: String!, bank_number: String!, bank_name: String!, email: String): Contact
-  createTag(name: String!, tag_limit: String): Tag
+  createTag(name: String!, tag_limit: Int): Tag
   createTransaction(contact_id: ID, amount: Int!, description: String, their_reference: String!, category_id: ID, emails: [String], bank_name: String, bank_number: String, contact_name: String, contact_email: String, save_contact: Boolean): Transaction
 
   deleteCard(id: ID!): Card

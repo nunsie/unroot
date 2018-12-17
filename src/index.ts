@@ -40,25 +40,19 @@ const resolvers = {
   },
   Mutation: {
     createCard(parent, args, context, info) {
-      // TODO: Implement resolver
-      // (name: String!, secure_code: String!): Card
       return root.createCard(context, args)
     },
     createCategory(parent, args, context, info) {
-      // TODO: Implement resolver
-      // (name: String!): Category
+      return root.createCategory(context, args)
     },
     createContact(parent, args, context, info) {
-      // TODO: Implement resolver
-      // (name: String!, bank_number: String!, bank_name: String!, email: String): Contact
+      return root.createContact(context, args)
     },
     createTag(parent, args, context, info) {
-      // TODO: Implement resolver
-      // (name: String!, tag_limit: String): Tag
+      return root.createTag(context, args)
     },
     createTransaction(parent, args, context, info) {
-      // TODO: Implement resolver
-      // (contact_id: ID, amount: Int!, description: String, their_reference: String!, category_id: ID, emails: [String], bank_name: String, bank_number: String, contact_name: String, contact_email: String, save_contact: Boolean): Transaction
+      return root.createTransaction(context, args)
     },
   
     deleteCard(parent, args, context, info) {
