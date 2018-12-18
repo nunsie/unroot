@@ -7,7 +7,8 @@
 <div align="center"><strong>🚀 Root Banking meets GraphQL</strong></div>
 <div align="center">A GraphQL Server on top of <a href="https://root.co.za">root.co.za</a>'s programmable banking api.</div>
 
-# Try it out here 👉 [unroot.co.za](https://live.unroot.co.za)
+# Try it out here 👉 [live.unroot.co.za](https://live.unroot.co.za)
+# Or here 👉 [sandbox.unroot.co.za](https://sandbox.unroot.co.za)
 
 ## Features
 - **Serverless Architecture:** Unroot runs on AWS Lambda which is scalable and cheap.

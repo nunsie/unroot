@@ -75,10 +75,11 @@ interface Message {
   message: string
 }
 
+const baseURL = `https://${process.env.STAGE === 'dev' ? 'sandbox' : 'live'}.root.co.za/v1`
 
 // define the api
 const api = create({
-  baseURL: 'https://api.root.co.za/v1',
+  baseURL,
 })
 
 api.addResponseTransform(response => {
